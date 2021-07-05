@@ -1,0 +1,19 @@
+﻿@using BlazorServerTest2.Model 
+
+<div class="product-list">
+    @foreach (var product in ProductRepository.GetAllProducts())
+    {
+        //var style = product.Id == randomProduct.Id ? "background-color: #fcdacf" : string.Empty;
+
+            <ProductView Id="product.Id" 
+                         Title="@product.Title" 
+                         Image="@product.Image"
+                        Description="@product.Description"
+                        Price="product.Price">
+
+            </ProductView>
+    }
+
+</div>
+
+
