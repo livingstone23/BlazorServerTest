@@ -1,19 +1,24 @@
 ﻿@using BlazorServerTest2.Model 
 
 <div class="product-list">
+
+    @{
+        var products = ProductRepository.GetAllProducts();
+        var randomProduct = products[new Random().Next(0, products.Length)];
+    }
+
     @foreach (var product in ProductRepository.GetAllProducts())
     {
-        //var style = product.Id == randomProduct.Id ? "background-color: #fcdacf" : string.Empty;
+        var style = product.Id == randomProduct.Id ? "background-color: #fcdacf" : string.Empty;
 
-            <ProductView Id="product.Id" 
-                         Title="@product.Title" 
-                         Image="@product.Image"
-                        Description="@product.Description"
-                        Price="product.Price">
+        <ProductView Id="product.Id"
+                     Title="@product.Title"
+                     Image="@product.Image" style="@style"
+                     Description="@product.Description"
+                     Price="product.Price">
 
-            </ProductView>
+        </ProductView>
     }
 
 </div>
-
 

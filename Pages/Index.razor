@@ -2,8 +2,29 @@
 
 <h1>My Store!</h1>
 
-<ProductList>
 
-</ProductList>
+<p>Discount: @discount% (<a href="" @onclick="IncreaseDiscount">Increase</a>/<a href="" @onclick="DecreaseDiscount">Decrease</a>)</p>
+
+<CascadingValue Name="Discount" Value="@discount" IsFixed="false">
+    <ProductList>
+
+    </ProductList>
+</CascadingValue>
 
 <SurveyPrompt Title="How is Blazor working for you?" />
+
+
+@code {
+    int discount = 0;
+
+    void IncreaseDiscount()
+    {
+        if (discount < 100)
+            discount++;
+    }
+    void DecreaseDiscount()
+    {
+        if (discount > 0)
+            discount--;
+    }
+}

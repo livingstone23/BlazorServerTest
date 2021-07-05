@@ -1,4 +1,4 @@
-﻿<div class="product">
+﻿@*<div class="product">
     <img src="images/@Image" alt="@Title" />
     <div class="product-info">
         <h1>@Title</h1>
@@ -6,8 +6,29 @@
         <p class="description">@Description</p>
     </div>
     <p><button>Add to Cart</button></p>
-</div>
+</div>*@
 
+
+<div class="product" @attributes="Params">
+    <img src="images/@Image" alt="@Title" />
+    <div class="product-info">
+        <h1>@Title</h1>
+        @{
+            var finalPrice = Price - (Price * Discount) / 100;
+            if (finalPrice == Price)
+            {
+                <p class="price">$ @Price.ToString("#,##0.#0")</p>
+            }
+            else
+            {
+                <p class="oldprice">$ @Price.ToString("#,##0.#0")</p>
+                <p class="price">$ @finalPrice.ToString("#,##0.#0")</p>
+            }
+        }
+        <p class="description">@Description</p>
+    </div>
+    <p><button>Add to Cart</button></p>
+</div>
 
 @code {
 
